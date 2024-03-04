@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DesafioRinhaBackend.Models.DTOs;
+using DesafioRinhaBackend.Repository.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioRinhaBackend.Controllers
 {
@@ -6,8 +8,15 @@ namespace DesafioRinhaBackend.Controllers
     [Route("api/[controller]")]
     public class PersonController : ControllerBase
     {
+        private readonly IBaseRepository _repository;
+
+        public PersonController(IBaseRepository repository)
+        {
+            _repository = repository;
+        }
+
         [HttpPost]
-        public IActionResult CreatePerson()
+        public IActionResult CreatePerson(PersonDTO personDTO)
         {
             return Ok();
         }
