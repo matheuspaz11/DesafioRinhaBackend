@@ -1,9 +1,7 @@
 ﻿namespace DesafioRinhaBackend.Models.Entities
 {
-    public class Person
+    public class Person : Base
     {
-        public long Id { get; set; }
-
         public string Surname { get; set; }
 
         public string Name { get; set; }
