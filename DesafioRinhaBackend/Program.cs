@@ -1,4 +1,6 @@
 using DesafioRinhaBackend.Context;
+using DesafioRinhaBackend.Repository.Interfaces;
+using DesafioRinhaBackend.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<PersonDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
+builder.Services.AddScoped<IBaseRepository, BaseRepository>();
 
 var app = builder.Build();
 

@@ -1,6 +1,7 @@
 ﻿using DesafioRinhaBackend.Models.DTOs;
 using DesafioRinhaBackend.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
 namespace DesafioRinhaBackend.Controllers
 {
@@ -9,10 +10,12 @@ namespace DesafioRinhaBackend.Controllers
     public class PersonController : ControllerBase
     {
         private readonly IBaseRepository _repository;
+        private readonly IMapper _mapper;
 
-        public PersonController(IBaseRepository repository)
+        public PersonController(IBaseRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         [HttpPost]
