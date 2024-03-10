@@ -13,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<PersonDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
 builder.Services.AddScoped<IBaseRepository, BaseRepository>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
