@@ -38,5 +38,20 @@ namespace DesafioRinhaBackend.Controllers
 
             return returnPerson != null ? Ok(returnPerson) : BadRequest("Pessoa não encontrada");
         }
+
+        [HttpDelete("Id")]
+        public async Task<IActionResult> DeletePersonById(int id)
+        {
+            var person = await _repository.GetPersonByIdAsync(id);
+
+            if (person == null)
+                return BadRequest("Pessoa não encontrada");
+            else
+            {
+                _repository.Delete(person);
+
+                return await _repository.SaveChangesAssync() ? Ok("Pessoa deleta com sucesso") : BadRequest("Houve um erro, tente novamente");
+            }
+        }
     }
 }
